@@ -34,7 +34,7 @@ public class IncomeCalculatorFacade {
 
     private Either<AppError, BigDecimal> tryCalculateForCountry(final DailyIncomeGross dailyIncomeGross, final String countryStr) {
         return tryGetCountryFromStr(countryStr)
-                .flatMap(country -> calculateForCountry(dailyIncomeGross, country));
+                .flatMap(country -> tryGetFactoryAndCalculate(dailyIncomeGross, country));
     }
 
     private Either<AppError, Country> tryGetCountryFromStr(final String country) {
@@ -42,7 +42,7 @@ public class IncomeCalculatorFacade {
                 .toEither(new AppError(ErrorReason.COUNTRY_NOT_SUPPORTED, country));
     }
 
-    private Either<AppError, BigDecimal> calculateForCountry(final DailyIncomeGross dailyIncomeGross, final Country country) {
+    private Either<AppError, BigDecimal> tryGetFactoryAndCalculate(final DailyIncomeGross dailyIncomeGross, final Country country) {
         return factoryProvider.provide(country)
                 .map(factory -> calculateByCountryTaxData(dailyIncomeGross, factory))
                 .toEither(new AppError(ErrorReason.COUNTRY_NOT_SUPPORTED, country.name()));
