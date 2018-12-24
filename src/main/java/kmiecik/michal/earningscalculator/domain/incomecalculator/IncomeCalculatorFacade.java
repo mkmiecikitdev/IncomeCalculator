@@ -10,6 +10,7 @@ import kmiecik.michal.earningscalculator.domain.errorhandling.AppError;
 import kmiecik.michal.earningscalculator.domain.errorhandling.ErrorReason;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class IncomeCalculatorFacade {
 
@@ -26,7 +27,7 @@ public class IncomeCalculatorFacade {
     public Either<AppError, BigDecimal> calculateMonthlyIncomeNetInPLN(final OfferDataDto form) {
 
         return validator.getValidatedForm(form)
-                .flatMap(validForm -> DailyIncomeGross.fromDayRate(form.getDailyRateGross())
+                .flatMap(validForm -> DailyIncomeGross.tryCreate(form.getDailyRateGross())
                         .flatMap(dailyIncomeGross -> tryCalculateForCountry(dailyIncomeGross, form.getCountry().toUpperCase())));
 
     }
@@ -52,7 +53,7 @@ public class IncomeCalculatorFacade {
         final BigDecimal beforeExchange = dailyIncomeGross.calculateMonthlyIncomeNet(countryFinancialData.getSimpleTaxPolicy());
 
         if(isOtherCurrency(currency)) {
-            return beforeExchange.multiply(exchangeRateService.getRate(currency));
+            return beforeExchange.multiply(exchangeRateService.getRate(currency)).setScale(2, RoundingMode.HALF_UP);
         }
 
         return beforeExchange;
@@ -61,7 +62,5 @@ public class IncomeCalculatorFacade {
     private boolean isOtherCurrency(final Currency currency) {
         return currency != exchangeRateService.referenceCurrency();
     }
-
-
 
 }

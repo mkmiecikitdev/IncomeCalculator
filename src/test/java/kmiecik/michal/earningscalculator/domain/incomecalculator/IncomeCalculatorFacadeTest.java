@@ -23,11 +23,11 @@ public class IncomeCalculatorFacadeTest {
     @Test
     public void shouldCalculateMonthlyIncomeNetInPoland() {
 
-        OfferDataDto form = new OfferDataDto("500", "pl");
+        OfferDataDto form = new OfferDataDto("125", "pl");
 
         final Either<AppError, BigDecimal> result = facade.calculateMonthlyIncomeNetInPLN(form);
 
-        assertValidCalculations(result, "7938");
+        assertValidCalculations(result, "1255.5");
 
     }
 

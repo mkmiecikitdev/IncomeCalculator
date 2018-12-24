@@ -17,10 +17,10 @@ class DailyIncomeGross {
         this.value = value;
     }
 
-    static Either<AppError, DailyIncomeGross> fromDayRate(String dayRateStr) {
+    static Either<AppError, DailyIncomeGross> tryCreate(String dayRateStr) {
         return Try.of(() -> new BigDecimal(dayRateStr))
                 .toEither(new AppError(ErrorReason.INVALID_INCOME_FORMAT, dayRateStr))
-                .flatMap(DailyIncomeGross::tryCreateValidEarnings);
+                .flatMap(DailyIncomeGross::tryCreateValidIncome);
 
     }
 
@@ -28,7 +28,7 @@ class DailyIncomeGross {
         return taxPolicy.apply(calculateMonthlyIncomeGross());
     }
 
-    private static Either<AppError, DailyIncomeGross> tryCreateValidEarnings(BigDecimal value) {
+    private static Either<AppError, DailyIncomeGross> tryCreateValidIncome(BigDecimal value) {
         return value.compareTo(BigDecimal.ZERO) > 0 ?
                 Either.right(new DailyIncomeGross(value)) :
                 Either.left(new AppError(ErrorReason.INVALID_INCOME_VALUE, value.toString()));

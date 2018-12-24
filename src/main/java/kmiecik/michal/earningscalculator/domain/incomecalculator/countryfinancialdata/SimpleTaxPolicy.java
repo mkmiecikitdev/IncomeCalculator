@@ -23,7 +23,7 @@ class SimpleTaxPolicy implements TaxPolicy {
     }
 
     private BigDecimal calculateAfterTax(BigDecimal incomeGross) {
-        return incomeGross.multiply(calculatePercentAfterTax()).divide(HUNDRED, RoundingMode.CEILING);
+        return incomeGross.multiply(calculatePercentAfterTax()).divide(HUNDRED, 2, RoundingMode.HALF_EVEN);
     }
 
     private BigDecimal calculatePercentAfterTax() {
