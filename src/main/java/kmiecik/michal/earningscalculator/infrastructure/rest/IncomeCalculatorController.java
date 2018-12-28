@@ -21,7 +21,7 @@ class IncomeCalculatorController {
 
     @GetMapping("/calculate")
     ResponseEntity<?> calculateIncome(@ModelAttribute OfferDataDto form) {
-        return responseResolver.resolve(facade.calculateMonthlyIncomeNetInPLN(form));
+        return responseResolver.resolve(facade.calculateMonthlyIncomeNetInPLN(form), bigDecimal -> new RestResponse(bigDecimal.toString()));
     }
 
 }

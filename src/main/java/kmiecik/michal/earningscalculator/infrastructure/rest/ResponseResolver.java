@@ -1,5 +1,6 @@
 package kmiecik.michal.earningscalculator.infrastructure.rest;
 
+import io.vavr.Function1;
 import io.vavr.collection.HashMap;
 import io.vavr.collection.Map;
 import io.vavr.control.Either;
@@ -20,8 +21,9 @@ class ResponseResolver {
                     ErrorReason.INVALID_INCOME_FORMAT, HttpStatus.BAD_REQUEST
             );
 
-    <T> ResponseEntity<?> resolve(Either<AppError, T> either) {
+    <T, R> ResponseEntity<?> resolve(Either<AppError, T> either, Function1<T, R> mapper) {
         return either
+                .map(mapper)
                 .map(this::createObject)
                 .getOrElseGet(this::createError);
     }
