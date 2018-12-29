@@ -12,7 +12,7 @@ class NBPExchangeRateService implements ExchangeRateService {
     private final WebClient webClient;
     private final String uri;
 
-    NBPExchangeRateService(String baseUrl, String uri) {
+    NBPExchangeRateService(final String baseUrl, final String uri) {
         this.webClient = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();
@@ -22,7 +22,7 @@ class NBPExchangeRateService implements ExchangeRateService {
 
     @Cacheable("currency")
     @Override
-    public BigDecimal getRate(Currency currency) {
+    public BigDecimal getRate(final Currency currency) {
 
         final NBPResponse block = webClient.get()
                 .uri(uri, currency.name())

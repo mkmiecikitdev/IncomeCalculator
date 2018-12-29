@@ -17,7 +17,7 @@ public class TaxConfig {
         return pl;
     }
 
-    public void setPl(Country pl) {
+    public void setPl(final Country pl) {
         this.pl = pl;
     }
 
@@ -25,7 +25,7 @@ public class TaxConfig {
         return de;
     }
 
-    public void setDe(Country de) {
+    public void setDe(final Country de) {
         this.de = de;
     }
 
@@ -33,7 +33,7 @@ public class TaxConfig {
         return uk;
     }
 
-    public void setUk(Country uk) {
+    public void setUk(final Country uk) {
         this.uk = uk;
     }
 
@@ -46,7 +46,7 @@ public class TaxConfig {
             return value;
         }
 
-        public void setValue(int value) {
+        public void setValue(final int value) {
             this.value = value;
         }
 
@@ -54,7 +54,7 @@ public class TaxConfig {
             return fixedCosts;
         }
 
-        public void setFixedCosts(int fixedCosts) {
+        public void setFixedCosts(final int fixedCosts) {
             this.fixedCosts = fixedCosts;
         }
 

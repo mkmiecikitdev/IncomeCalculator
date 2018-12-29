@@ -13,7 +13,7 @@ public class ExchangeServicesConfig {
         return nbp;
     }
 
-    public void setNbp(Api nbp) {
+    public void setNbp(final Api nbp) {
         this.nbp = nbp;
     }
 
@@ -27,7 +27,7 @@ public class ExchangeServicesConfig {
             return baseUrl;
         }
 
-        public void setBaseUrl(String baseUrl) {
+        public void setBaseUrl(final String baseUrl) {
             this.baseUrl = baseUrl;
         }
 
@@ -35,7 +35,7 @@ public class ExchangeServicesConfig {
             return uri;
         }
 
-        public void setUri(String uri) {
+        public void setUri(final String uri) {
             this.uri = uri;
         }
     }

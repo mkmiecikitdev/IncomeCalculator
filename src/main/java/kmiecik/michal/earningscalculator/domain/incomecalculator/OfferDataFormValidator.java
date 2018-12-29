@@ -24,7 +24,7 @@ class OfferDataFormValidator {
 
     }
 
-    private Either<AppError, OfferDataDto> createError(ErrorReason errorReason) {
+    private Either<AppError, OfferDataDto> createError(final ErrorReason errorReason) {
         return Either.left(new AppError(errorReason, MESSAGE));
     }
 

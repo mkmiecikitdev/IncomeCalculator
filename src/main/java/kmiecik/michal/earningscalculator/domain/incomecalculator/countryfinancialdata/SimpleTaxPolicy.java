@@ -12,13 +12,13 @@ class SimpleTaxPolicy implements TaxPolicy {
     private final BigDecimal taxValue;
     private final BigDecimal fixedCosts;
 
-    SimpleTaxPolicy(BigDecimal taxValue, BigDecimal fixedCosts) {
+    SimpleTaxPolicy(final BigDecimal taxValue, final BigDecimal fixedCosts) {
         this.taxValue = taxValue;
         this.fixedCosts = fixedCosts;
     }
 
     @Override
-    public BigDecimal apply(BigDecimal earningsGross) {
+    public BigDecimal apply(final BigDecimal earningsGross) {
 
         final BigDecimal afterSubtraction = earningsGross.subtract(fixedCosts);
 
@@ -28,7 +28,7 @@ class SimpleTaxPolicy implements TaxPolicy {
         return calculateAfterTax(afterSubtraction);
     }
 
-    private BigDecimal calculateAfterTax(BigDecimal incomeGross) {
+    private BigDecimal calculateAfterTax(final BigDecimal incomeGross) {
         return incomeGross.multiply(calculatePercentAfterTax()).divide(HUNDRED, 2, RoundingMode.HALF_EVEN);
     }
 

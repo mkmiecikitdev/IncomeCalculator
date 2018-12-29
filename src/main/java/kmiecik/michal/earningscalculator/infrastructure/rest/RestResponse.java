@@ -4,7 +4,7 @@ public class RestResponse {
 
     private final String income;
 
-    public RestResponse(String income) {
+    public RestResponse(final String income) {
         this.income = income;
     }
 

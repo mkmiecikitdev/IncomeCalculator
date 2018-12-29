@@ -13,22 +13,22 @@ class DailyIncomeGross {
 
     private final BigDecimal value;
 
-    private DailyIncomeGross(BigDecimal value) {
+    private DailyIncomeGross(final BigDecimal value) {
         this.value = value;
     }
 
-    static Either<AppError, DailyIncomeGross> tryCreate(String dayRateStr) {
+    static Either<AppError, DailyIncomeGross> tryCreate(final String dayRateStr) {
         return Try.of(() -> new BigDecimal(dayRateStr))
                 .toEither(new AppError(ErrorReason.INVALID_INCOME_FORMAT, dayRateStr))
                 .flatMap(DailyIncomeGross::tryCreateValidIncome);
 
     }
 
-    BigDecimal calculateMonthlyIncomeNet(TaxPolicy taxPolicy) {
+    BigDecimal calculateMonthlyIncomeNet(final TaxPolicy taxPolicy) {
         return taxPolicy.apply(calculateMonthlyIncomeGross());
     }
 
-    private static Either<AppError, DailyIncomeGross> tryCreateValidIncome(BigDecimal value) {
+    private static Either<AppError, DailyIncomeGross> tryCreateValidIncome(final BigDecimal value) {
         return value.compareTo(BigDecimal.ZERO) >= 0 ?
                 Either.right(new DailyIncomeGross(value)) :
                 Either.left(new AppError(ErrorReason.INVALID_INCOME_VALUE, value.toString()));

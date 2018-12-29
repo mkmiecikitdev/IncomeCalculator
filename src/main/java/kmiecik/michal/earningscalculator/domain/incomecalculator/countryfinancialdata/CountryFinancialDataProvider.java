@@ -13,7 +13,7 @@ public class CountryFinancialDataProvider {
 
     private final Map<Country, CountryFinancialData> map;
 
-    public CountryFinancialDataProvider(TaxConfig taxConfig) {
+    public CountryFinancialDataProvider(final TaxConfig taxConfig) {
         this.map = HashMap.of(
             Country.PL, new CountryFinancialData(new SimpleTaxPolicy(new BigDecimal(taxConfig.getPl().getValue()), new BigDecimal(taxConfig.getPl().getFixedCosts())), Currency.PLN),
             Country.DE, new CountryFinancialData(new SimpleTaxPolicy(new BigDecimal(taxConfig.getDe().getValue()), new BigDecimal(taxConfig.getDe().getFixedCosts())), Currency.EUR),

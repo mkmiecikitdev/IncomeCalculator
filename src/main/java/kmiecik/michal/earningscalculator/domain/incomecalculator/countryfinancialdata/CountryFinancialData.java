@@ -8,7 +8,7 @@ public class CountryFinancialData {
     private final TaxPolicy taxPolicy;
     private final Currency currency;
 
-    CountryFinancialData(TaxPolicy taxPolicy, Currency currency) {
+    CountryFinancialData(final TaxPolicy taxPolicy, final Currency currency) {
         this.currency = currency;
         this.taxPolicy = taxPolicy;
     }

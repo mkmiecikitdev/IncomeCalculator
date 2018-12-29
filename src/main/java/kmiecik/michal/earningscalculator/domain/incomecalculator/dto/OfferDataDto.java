@@ -5,7 +5,7 @@ public class OfferDataDto {
     private final String dailyRateGross;
     private final String country;
 
-    public OfferDataDto(String dailyRateGross, String country) {
+    public OfferDataDto(final String dailyRateGross, final String country) {
         this.dailyRateGross = dailyRateGross;
         this.country = country;
     }

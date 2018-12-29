@@ -38,7 +38,7 @@ class IncomeCalculatorModule {
     }
 
 
-    private TaxConfig.Country createCountryFinancialData(int tax, int fixedCots) {
+    private TaxConfig.Country createCountryFinancialData(final int tax, final int fixedCots) {
         TaxConfig.Country financialData = new TaxConfig.Country();
         financialData.setValue(tax);
         financialData.setFixedCosts(fixedCots);
@@ -54,7 +54,7 @@ class IncomeCalculatorModule {
         );
 
         @Override
-        public BigDecimal getRate(Currency currency) {
+        public BigDecimal getRate(final Currency currency) {
             return rates.get(currency)
                     .getOrElseThrow(IllegalArgumentException::new);
         }

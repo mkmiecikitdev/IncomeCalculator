@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 class NBPExchangeRateModule {
 
     @Bean
-    NBPExchangeRateService nbpExchangeRateService(ExchangeServicesConfig config) {
+    NBPExchangeRateService nbpExchangeRateService(final ExchangeServicesConfig config) {
         return new NBPExchangeRateService(config.getNbp().getBaseUrl(), config.getNbp().getUri());
     }
 

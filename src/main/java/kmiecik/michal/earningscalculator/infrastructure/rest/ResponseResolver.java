@@ -21,18 +21,18 @@ class ResponseResolver {
                     ErrorReason.INVALID_INCOME_FORMAT, HttpStatus.BAD_REQUEST
             );
 
-    <T, R> ResponseEntity<?> resolve(Either<AppError, T> either, Function1<T, R> mapper) {
+    <T, R> ResponseEntity<?> resolve(final Either<AppError, T> either, final Function1<T, R> mapper) {
         return either
                 .map(mapper)
                 .map(this::createObject)
                 .getOrElseGet(this::createError);
     }
 
-    private ResponseEntity<Object> createObject(Object object) {
+    private ResponseEntity<Object> createObject(final Object object) {
         return new ResponseEntity<>(object, HttpStatus.OK);
     }
 
-    private ResponseEntity<Object> createError(AppError error) {
+    private ResponseEntity<Object> createError(final AppError error) {
         return new ResponseEntity<>(error, HTTP_STATUS_MAP.getOrElse(error.getErrorReason(), HttpStatus.BAD_REQUEST));
     }
 
