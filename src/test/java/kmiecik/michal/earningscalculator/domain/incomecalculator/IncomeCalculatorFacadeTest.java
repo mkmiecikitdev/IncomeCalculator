@@ -54,6 +54,17 @@ public class IncomeCalculatorFacadeTest {
     }
 
     @Test
+    public void shouldReturn0WhenIncomeLessThanFixedCosts() {
+
+        OfferDataDto offerDataDto = new OfferDataDto("10", "pl");
+
+        final Either<AppError, BigDecimal> result = facade.calculateMonthlyIncomeNetInPLN(offerDataDto);
+
+        assertValidCalculations(result, "0");
+
+    }
+
+    @Test
     public void shouldReturnFormCannotBeNull() {
 
         final Either<AppError, BigDecimal> error = facade.calculateMonthlyIncomeNetInPLN(null);

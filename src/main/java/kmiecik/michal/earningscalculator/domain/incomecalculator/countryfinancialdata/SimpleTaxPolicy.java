@@ -19,7 +19,13 @@ class SimpleTaxPolicy implements TaxPolicy {
 
     @Override
     public BigDecimal apply(BigDecimal earningsGross) {
-        return calculateAfterTax(earningsGross.subtract(fixedCosts));
+
+        final BigDecimal afterSubtraction = earningsGross.subtract(fixedCosts);
+
+        if(afterSubtraction.compareTo(BigDecimal.ZERO) < 0)
+            return BigDecimal.ZERO;
+
+        return calculateAfterTax(afterSubtraction);
     }
 
     private BigDecimal calculateAfterTax(BigDecimal incomeGross) {

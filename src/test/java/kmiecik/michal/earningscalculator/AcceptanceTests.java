@@ -25,7 +25,7 @@ public class AcceptanceTests {
     public void shouldReturnNumericValue() throws Exception {
         this.mockMvc.perform(get("/calculate?dailyRateGross=100&country=de")).andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isNumber());
+                .andExpect(jsonPath("$.income").isNotEmpty());
     }
 
 
