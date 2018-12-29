@@ -29,7 +29,7 @@ class DailyIncomeGross {
     }
 
     private static Either<AppError, DailyIncomeGross> tryCreateValidIncome(BigDecimal value) {
-        return value.compareTo(BigDecimal.ZERO) > 0 ?
+        return value.compareTo(BigDecimal.ZERO) >= 0 ?
                 Either.right(new DailyIncomeGross(value)) :
                 Either.left(new AppError(ErrorReason.INVALID_INCOME_VALUE, value.toString()));
     }
