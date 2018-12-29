@@ -2,7 +2,7 @@ This is a simple application calculating your monthly income net in Poland, Unit
 
 * Guide for developers:
 
-1. Run "git clone https://github.com/skax/NewsBrowser.git" in terminal to download project
+1. Run "git clone https://github.com/skax/IncomeCalculator.git" in terminal to download project
 2. Go to folder with project
 3. Run './mvnw clean package' in terminal
 4. Go to /target folder
