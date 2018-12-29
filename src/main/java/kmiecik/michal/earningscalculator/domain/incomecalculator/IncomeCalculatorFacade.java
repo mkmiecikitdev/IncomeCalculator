@@ -18,7 +18,7 @@ public class IncomeCalculatorFacade {
     private final ExchangeRateService exchangeRateService;
     private final OfferDataFormValidator validator;
 
-    public IncomeCalculatorFacade(final CountryFinancialDataProvider factoryProvider, final ExchangeRateService exchangeRateService, OfferDataFormValidator validator) {
+    public IncomeCalculatorFacade(final CountryFinancialDataProvider factoryProvider, final ExchangeRateService exchangeRateService, final OfferDataFormValidator validator) {
         this.factoryProvider = factoryProvider;
         this.exchangeRateService = exchangeRateService;
         this.validator = validator;
