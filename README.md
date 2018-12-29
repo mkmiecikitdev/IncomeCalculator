@@ -7,7 +7,7 @@ This is a simple application calculating your monthly income net in Poland, Unit
 3. Run './mvnw clean package' in terminal
 4. Go to /target folder
 5. Run 'java -jar earningscalculator-0.0.1-SNAPSHOT.jar' (required installed java 8)
-6. Go to localhost:8080
+6. Go to localhost:8080 in your browser
 
 * Guide for users:
 
