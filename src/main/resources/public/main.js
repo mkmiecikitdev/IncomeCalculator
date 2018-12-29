@@ -192,7 +192,7 @@ var CalculatorComponent = /** @class */ (function () {
         this.url = 'http://localhost:8080/calculate';
         this.map = new Map()
             .set("PL", new _countrydata__WEBPACK_IMPORTED_MODULE_1__["CountryData"]("Poland", "PLN"))
-            .set("DE", new _countrydata__WEBPACK_IMPORTED_MODULE_1__["CountryData"]("German", "EUR"))
+            .set("DE", new _countrydata__WEBPACK_IMPORTED_MODULE_1__["CountryData"]("Germany", "EUR"))
             .set("UK", new _countrydata__WEBPACK_IMPORTED_MODULE_1__["CountryData"]("United Kingdom", "GBP"));
         this.errorMap = new Map()
             .set("INVALID_INCOME_VALUE", "Invalid income value: ")
