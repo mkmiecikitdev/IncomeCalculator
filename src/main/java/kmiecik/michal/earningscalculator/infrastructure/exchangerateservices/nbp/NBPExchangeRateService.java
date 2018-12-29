@@ -24,8 +24,6 @@ class NBPExchangeRateService implements ExchangeRateService {
     @Override
     public BigDecimal getRate(Currency currency) {
 
-        System.out.println(currency.name());
-
         final NBPResponse block = webClient.get()
                 .uri(uri, currency.name())
                 .retrieve()
