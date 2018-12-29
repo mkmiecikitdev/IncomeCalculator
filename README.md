@@ -1,4 +1,4 @@
-This is a simple application calculating your monthly income net in Poland, United Kingdom or German.
+This is a simple application calculating your monthly income net in Poland, United Kingdom or Germany.
 
 * Guide for developers:
 
