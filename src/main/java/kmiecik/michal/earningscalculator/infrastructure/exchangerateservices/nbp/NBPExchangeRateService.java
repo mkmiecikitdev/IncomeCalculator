@@ -2,6 +2,7 @@ package kmiecik.michal.earningscalculator.infrastructure.exchangerateservices.nb
 
 import kmiecik.michal.earningscalculator.domain.incomecalculator.ExchangeRateService;
 import kmiecik.michal.earningscalculator.domain.incomecalculator.Currency;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.math.BigDecimal;
@@ -19,8 +20,11 @@ class NBPExchangeRateService implements ExchangeRateService {
         this.uri = uri;
     }
 
+    @Cacheable("currency")
     @Override
     public BigDecimal getRate(Currency currency) {
+
+        System.out.println(currency.name());
 
         final NBPResponse block = webClient.get()
                 .uri(uri, currency.name())
